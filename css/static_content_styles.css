@@ -1,0 +1,5 @@
+/* Styling for static content backend */
+.ginput_container.ginput_container_staticcontent img {
+    max-width: 100%;
+    height: auto;
+}
