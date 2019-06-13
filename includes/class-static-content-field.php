@@ -125,7 +125,12 @@ class Static_Content_GF_Field extends GF_Field {
 
 		// Prepare the other input attributes.
 		$tabindex              = $this->get_tabindex();
-		$logic_event           = ! $is_form_editor && ! $is_entry_detail ? $this->get_conditional_logic_event( 'keyup' ) : '';
+		$logic_event = '';
+		if (! $is_form_editor && ! $is_entry_detail){
+			if(version_compare( GFForms::$version, '2.4-beta-1', '<' )){
+		        	$logic_event = $this->get_conditional_logic_event( 'keyup' );
+            		}
+        	}
 		$placeholder_attribute = $this->get_field_placeholder_attribute();
 		$invalid_attribute     = $this->failed_validation ? 'aria-invalid="true"' : 'aria-invalid="false"';
 		$disabled_text         = $is_form_editor ? 'disabled="disabled"' : '';
